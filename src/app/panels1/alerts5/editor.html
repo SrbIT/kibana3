@@ -1,0 +1,200 @@
+<div class="editor-row">
+    <div class="section">
+        <div class="editor-option">
+            <label class="normal">Description</label>
+            <textarea ng-model="panel.content" rows="1" style="width:86%" class="ng-pristine ng-valid">
+            </textarea>
+        </div>
+        <div class="editor-option">
+            <label class="normal">Alert type</label>
+            <select class="input-medium ng-valid ng-dirty" ng-model="panel.a" ng-options="f for f in ['scheduled','real_time']">
+                <option value="0" selected="selected">scheduled</option>
+                <option value="1">real_time</option>
+            </select>
+        </div>
+        <div class="editor-option" ng-show="panel.a == 'scheduled'">
+            <label class="normal">Time Range</label>
+            <select class="input-medium ng-valid ng-dirty" ng-options="f for f in [hour,day,week,month,cron]">
+                <option value="hour" selected="selected">hour</option>
+                <option value="week">week</option>
+                <option value="month">month</option>
+                <option value="cron">cron</option>
+            </select>
+
+            <label class="normal">Schedule On</label>
+            <select class="input-medium ng-valid ng-dirty" ng-options="f for f in [mon,tue,wed,thu,fri,sat,sun]">
+                <option value="mon" selected="selected">mon</option>
+                <option value="tue">tue</option>
+                <option value="wed">wed</option>
+                <option value="thu">thu</option>
+                <option value="fri">fri</option>
+                <option value="sat">sat</option>
+                <option value="sun">sun</option>
+            </select>
+
+            <label class="normal">at</label>
+            <select class="input-small ng-pristine ng-valid" ng-options="f for f in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]">
+                <option value="0">0:00</option>
+                <option value="1">1:00</option>
+                <option value="2">2:00</option>
+                <option value="3">3:00</option>
+                <option value="4">4:00</option>
+                <option value="5">5:00</option>
+                <option value="6">6:00</option>
+                <option value="7" selected="selected">7:00</option>
+                <option value="8">8:00</option>
+                <option value="9">9:00</option>
+                <option value="10">10:00</option>
+                <option value="11">11:00</option>
+                <option value="12">12:00</option>
+                <option value="13">13:00</option>
+                <option value="14">14:00</option>
+                <option value="15">15:00</option>
+                <option value="16">16:00</option>
+                <option value="17">17:00</option>
+                <option value="18">18:00</option>
+                <option value="19">19:00</option>
+                <option value="20">20:00</option>
+                <option value="21">21:00</option>
+                <option value="22">22:00</option>
+                <option value="23">23:00</option>
+            </select>
+        </div>
+        <div class="editor-option" ng-show="panel.a == 'scheduled'">
+            <label class="normal">Trigger condition</label>
+            <select class="input-medium ng-valid ng-dirty" ng-options="f for f in [num_results,num_hosts,num_sources,custom]">
+                <option value="num_results" selected="selected">num_results</option>
+                <option value="num_hosts">num_hosts</option>
+                <option value="num_sources">num_sources</option>
+                <option value="custom">custom</option>
+            </select>
+
+            <label class="normal">Trigger if</label>
+            <select class="input-medium ng-valid ng-dirty" ng-options="f for f in [is_greater_than,is_less_than,is_equals_to,is_not_equal_to,drops_by,rises_by]">
+                <option value="is_greater_than" selected="selected">is_greater_than</option>
+                <option value="is_less_than">is_less_than</option>
+                <option value="is_equals_to">is_equals_to</option>
+                <option value="is_not_equal_to">is_not_equal_to</option>
+                <option value="drops_by">drops_by</option>
+                <option value="rises_by">rises_by</option>
+            </select>
+        </div>
+        <div class="editor-option" ng-show="panel.a == 'real_time'">
+            <label class="normal">Trigger condition</label>
+            <select class="input-medium ng-valid ng-dirty" ng-options="f for f in [per_results,num_results,num_hosts,num_sources,custom]">
+                <option value="per_results" selected="selected">per_results</option>
+                <option value="num_results">num_results</option>
+                <option value="num_hosts">num_hosts</option>
+                <option value="num_sources">num_sources</option>
+                <option value="custom">custom</option>
+            </select>
+        </div>
+
+        <!-- Start action to alert -->
+
+        <h5>Enable Actions</h5>
+        <div class="editor-option">
+            <label>List in Triggered Alerts</label>
+            <!-- <input type="checkbox" class="ng-valid ng-dirty"> -->
+            <!-- <input type="checkbox" class="ng-pristine ng-valid" checked="checked"> -->
+            <!-- </div> -->
+            <!-- <div class="editor-option"> -->
+            <label>Serverity</label>
+            <select class="input-medium ng-valid ng-dirty" ng-options="f for f in [info,low,medium,high,critical]">
+                <option value="info" selected="selected">info</option>
+                <option value="low">low</option>
+                <option value="medium">medium</option>
+                <option value="high">high</option>
+                <option value="critical">critical</option>
+            </select>
+        </div>
+
+        <div class="editor-option">
+            <label>Send Email</label>
+            <!-- <input type="checkbox" class="ng-valid ng-dirty"> -->
+            <!-- </div> -->
+
+            <!-- <div class="editor-option"> -->
+            <!-- <div> -->
+            <label>To</label>
+            <input type="email" class="form-control ng-pristine ng-valid-email ng-invalid ng-invalid-required ng-touched" placeholder="sonpa@fpt.com.vn" title="Email" required="">
+            <label>Priority</label>
+            <select class="input-medium ng-valid ng-dirty" ng-options="f for f in [info,low,medium,high,critical]">
+                <option value="info" selected="selected">info</option>
+                <option value="low">low</option>
+                <option value="medium">medium</option>
+                <option value="high">high</option>
+                <option value="critical">critical</option>
+            </select>
+            <label>Subject</label>
+            <input type="text" class="ng-pristine ng-valid">
+
+            <label>Message</label>
+            <textarea ng-model="panel.content" rows="3" style="width:95%"></textarea>
+            <label>Include</label>
+
+            <fieldset class="form-group">
+                <input type="checkbox" class="ng-valid ng-dirty">Link to Alert
+                <input type="checkbox" class="ng-valid ng-dirty">Link to Results
+            </fieldset>
+            <fieldset>
+                <input type="checkbox" class="ng-valid ng-dirty">Search String
+                <input type="checkbox" class="ng-valid ng-dirty">Inline Table
+            </fieldset>
+            <fieldset>
+
+                <input type="checkbox" class="ng-valid ng-dirty">Trigger Condition
+                <input type="checkbox" class="ng-valid ng-dirty">Attach CSV
+            </fieldset>
+            <fieldset>
+                <input type="checkbox" class="ng-valid ng-dirty">Trigger Time
+                <input type="checkbox" class="ng-valid ng-dirty">Attach PDF
+            </fieldset>
+        </div>    
+        <!-- </div> -->
+
+        <div class="editor-option">
+            <label>Run a Script</label>
+            <!-- <input type="checkbox" class="ng-valid ng-dirty"> -->
+        <!-- </div>
+        <div class="editor-option"> -->
+            <label>Filename</label>
+            <input type="text" class="ng-pristine ng-valid">
+        </div>
+        <div class="editor-option">
+            <h5>Action Options</h5>
+            <label>When triggered, execute actions</label>
+            <select class="input-medium ng-valid ng-dirty" ng-options="f for f in [once,for_each]">
+                <option value="once" selected="selected">once</option>
+                <option value="for_each">for_each</option>
+            </select>
+        </div>
+        <div class="editor-option">
+            <label>Throttle</label>
+            <input type="checkbox" class="ng-valid ng-dirty">
+            <label>Suppress triggering for</label>
+            <input type="text" class="ng-pristine ng-valid">
+            <select class="input-medium ng-valid ng-dirty" ng-options="f for f in [seconds,minutes,hours,days]">
+                <option value="seconds" selected="selected">second(s)</option>
+                <option value="minutes">minute(s)</option>
+                <option value="hours">hour(s)</option>
+                <option value="days">day(s)</option>
+            </select>
+        </div>
+
+        <div class="editor-option">
+            <label>Suppress results containing field value</label>
+            <input type="text" class="ng-pristine ng-valid">
+        </div>
+
+        <div class="editor-option">
+            <h5>Sharing</h5>
+            <label>Permissions</label>
+            <select class="input-medium ng-valid ng-dirty" ng-options="f for f in [private,shared_app]">
+                <option value="private" selected="selected">private</option>
+                <option value="shared_app">shared_app</option>
+            </select>
+        </div>
+        <!-- End action to alert -->
+    </div>
+</div>
